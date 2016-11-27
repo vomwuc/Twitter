@@ -1,0 +1,27 @@
+header{
+    background-color: #0a64eb;
+    height:10%;
+
+}
+
+header a{
+    color:white;
+    text-decoration: none;
+}
+
+#main_title{
+    display: inline-block;
+}
+
+nav{
+    display: inline-block;
+}
+
+nav li{
+    display: inline-block;
+}
+
+img#logo{
+    width: 10%;
+    height: 10%;
+}

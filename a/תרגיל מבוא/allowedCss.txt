@@ -1,0 +1,1 @@
+width, hight, color, font, inline-*, align, border, padding, margin, background-*, 
