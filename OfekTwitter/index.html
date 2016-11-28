@@ -4,25 +4,65 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/normalize.css">
     <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/feed.css">
     <title>OfekTwitter</title>
 </head>
 <body>
     <div id="main_wrapper">
         <header>
             <div id="main_title">
-                <a href="#"><img src="../images/ofek.png" id="logo"/></a>
-                <a href="#">OfekTwitter</a>
+                <a class="navbar-btn"><img src="../images/ofek.png" id="logo" /></a>
+                <a href="#" class="navbar-btn">OfekTwitter</a>
             </div>
 
             <nav>
                 <ul>
-                    <li><a href="#">Users</a></li>
-                    <li><a href="#">Sign Up</a></li>
-                    <li><a href="#">Sign In</a></li>
+                    <li class="navbar-btn"><a href="#">Users</a></li>
+                    <li class="navbar-btn"><a href="#">Sign Up</a></li>
+                    <li class="navbar-btn"><a href="#">Sign In</a></li>
                 </ul>
             </nav>
         </header>
-        asdfdsf
+
+        <article>
+            <div id="user_input">
+                <textarea placeholder="tweet text..."></textarea>
+                <button>publish</button>
+            </div>
+
+            <div id="tweets">
+                <div class="tweet">
+                    <aside name="left" class="tweet_left">
+                        <img src="../images/useravatar.png" height="48" width="48"/>
+                    </aside>
+
+                    <aside name="right" class="tweet_right">
+                        <h5>James Bond says:</h5>
+                        <p>aaaasdfsdf asfsa  s s s </p>
+                    </aside>
+                </div>
+                <div class="tweet">
+                    <aside name="left" class="tweet_left">
+                        <img src="../images/useravatar.png" height="48" width="48"/>
+                    </aside>
+
+                    <aside name="right" class="tweet_right">
+                        <h5>James Bond says:</h5>
+                        <p>aaaasdfsdf asfsa  s s s </p>
+                    </aside>
+                </div>
+                <div class="tweet">
+                    <aside name="left" class="tweet_left">
+                        <img src="../images/useravatar.png" height="48" width="48"/>
+                    </aside>
+
+                    <aside name="right" class="tweet_right">
+                        <h5>James Bond says:</h5>
+                        <p>aaaasdfsdf asfsa  s s s </p>
+                    </aside>
+                </div>
+            </div>
+        </article>
     </div>
 </body>
 </html>

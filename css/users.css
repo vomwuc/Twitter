@@ -1,0 +1,67 @@
+article{
+    margin-top: 1vw;
+    padding-left: 12vw;
+    display: inline-block;
+    width:50vw;
+}
+
+/*filter*/
+#filter label{
+    font-size: 0.9vw;
+}
+
+#filter input{
+    width: 12vw;
+    font-size: 0.9vw;
+}
+
+#filter button{
+    width: 2.5vw;
+    font-size: 0.9vw;
+    padding-left: 0.6vw;
+}
+
+/*user*/
+.user{
+    border: silver 3px solid;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top:1vw;
+}
+
+.user img{
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    margin: auto;
+    margin-top: 1vw;
+    width: 48px;
+    display: block;
+}
+
+.user button{
+    margin: auto;
+    margin-top: 4px;
+    display: block;
+    font-size: 1vw;
+    width: 3.8vw;
+    height: 1.4vw;
+}
+
+.user label{
+    display: block;
+    text-align: center;
+    margin-top: 1vw;
+    padding-bottom: 1vw;
+    font-size: 1.2vw;
+}
+
+/*followees*/
+#followees{
+    width:15vw;
+    border: silver 3px solid;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top:1vw;
+    text-align: center;
+    display: inline-block;
+}
