@@ -1,8 +1,12 @@
-article{
+section{
     margin-top: 1vw;
     padding-left: 12vw;
+}
+
+article{
     display: inline-block;
     width:50vw;
+    vertical-align: top;
 }
 
 /*filter*/
@@ -62,6 +66,12 @@ article{
     border-radius: 4px;
     display: inline-block;
     margin-top:1vw;
+    margin-left: 8vw;
     text-align: center;
     display: inline-block;
+}
+
+#followees .user img{
+    padding-left: 1.5vw;
+    padding-right: 1.5vw;
 }
