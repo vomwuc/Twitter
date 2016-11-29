@@ -2,93 +2,153 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/users.css">
-    <title>OfekTwitter | Sign In</title>
+    <title>OfekTwitter | Users</title>
 </head>
 <body>
-    <div id="main_wrapper">
+    <div id="main_wrapper" class="container">
         <header>
-            <div id="main_title">
-                <a class="navbar-btn"><img src="../images/ofek.png" id="logo" /></a>
-                <a href="#" class="navbar-btn">OfekTwitter</a>
-            </div>
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <div id="main_title" >
+                        <a class="navbar-brand" href="index.html">
+                            <div class="navbar-header">
+                                <img id="logo" src="../images/ofek.png" />OfekTwitter
+                            </div>
+                        </a>
+                    </div>
 
-            <nav>
-                <ul>
-                    <li class="navbar-btn"><a href="#">Users</a></li>
-                    <li class="navbar-btn"><a href="#">Sign Up</a></li>
-                    <li class="navbar-btn"><a href="#">Sign In</a></li>
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                        <li><a href="#">Sign In</a></li>
+                    </ul>
+                </div>
             </nav>
         </header>
 
         <section>
-            <div id="filter">
-                <label>Filter by</label>
-                <input type="text" placeholder="user name">
-                <button>ok</button>
+            <div name="filter" class="form-inline row">
+                    <input type="text" class="form-control" placeholder="filter by user name">
+                <button class="btn btn-primary">ok</button>
             </div>
 
-            <article>
-                <div id="users">
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
+            <div name="users-content" class="row">
+                <article class="col-md-10">
+                    <div id="users" class="row">
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div name="user" class="col-md-2">
+                            <div class="thumbnail text-center">
+                                <img src="../images/useravatar.png"/>
+                                <div class="caption">
+                                    <button class="btn btn-primary ">follow</button>
+                                    <p>af asdf</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                    <div class="user">
-                        <img src="../images/useravatar.png"/>
-                        <button>follow</button>
-                        <label>asdfaf asdf </label>
-                    </div>
-                </div>
-            </article>
+                </article>
 
-            <aside id="followees">
-                <h2>Followees</h2>
-                <div class="user">
-                    <img src="../images/useravatar.png"/>
-                    <button>unfollow</button>
-                    <label>asdfaf asdf </label>
-                </div>
-                <div class="user">
-                    <img src="../images/useravatar.png"/>
-                    <button>unfollow</button>
-                    <label>asdfaf asdf </label>
-                </div>
-            </aside>
+                <aside id="followees" class="text-center col-md-2">
+                    <h2>Followees</h2>
+                    <div class="thumbnail text-center">
+                        <img src="../images/useravatar.png"/>
+                        <div class="caption">
+                            <button class="btn btn-primary ">follow</button>
+                            <p>af asdf</p>
+                        </div>
+                    </div>
+                    <div class="thumbnail text-center">
+                        <img src="../images/useravatar.png"/>
+                        <div class="caption">
+                            <button class="btn btn-primary ">follow</button>
+                            <p>af asdf</p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </section>
     </div>
 </body>

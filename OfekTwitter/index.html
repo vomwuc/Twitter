@@ -2,62 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/feed.css">
     <title>OfekTwitter</title>
 </head>
 <body>
-    <div id="main_wrapper">
+    <div id="main_wrapper" class="container">
         <header>
-            <div id="main_title">
-                <a class="navbar-btn"><img src="../images/ofek.png" id="logo" /></a>
-                <a href="#" class="navbar-btn">OfekTwitter</a>
-            </div>
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+                <div class="container">
+                    <div id="main_title" >
+                        <a class="navbar-brand" href="index.html">
+                            <div class="navbar-header">
+                                <img id="logo" src="../images/ofek.png" />OfekTwitter
+                            </div>
+                        </a>
+                    </div>
 
-            <nav>
-                <ul>
-                    <li class="navbar-btn"><a href="#">Users</a></li>
-                    <li class="navbar-btn"><a href="#">Sign Up</a></li>
-                    <li class="navbar-btn"><a href="#">Sign In</a></li>
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="users.html">Users</a></li>
+                        <li><a href="#">Sign Up</a></li>
+                        <li><a href="#">Sign In</a></li>
+                    </ul>
+                </div>
             </nav>
         </header>
 
         <article>
-            <div id="user_input">
-                <textarea placeholder="tweet text..."></textarea>
-                <button>publish</button>
+            <div name="user_input_tweet">
+                <textarea class="form-control" placeholder="tweet text..."></textarea>
+                <div class="text-right">
+                    <button id="publish" class="btn btn-primary">publish</button>
+                </div>
             </div>
 
             <div id="tweets">
-                <div class="tweet">
-                    <aside name="left" class="tweet_left">
-                        <img src="../images/useravatar.png" height="48" width="48"/>
-                    </aside>
-
-                    <aside name="right" class="tweet_right">
-                        <h5>James Bond says:</h5>
+                <div name="tweet" class="row">
+                    <div class="col-md-1">
+                        <img src="../images/useravatar.png"/>
+                    </div>
+                    <aside class="col-md-2">
+                        <strong>James Bond says:</strong>
                         <p>aaaasdfsdf asfsa  s s s </p>
                     </aside>
                 </div>
-                <div class="tweet">
-                    <aside name="left" class="tweet_left">
-                        <img src="../images/useravatar.png" height="48" width="48"/>
-                    </aside>
-
-                    <aside name="right" class="tweet_right">
-                        <h5>James Bond says:</h5>
+                <div name="tweet" class="row">
+                    <div class="col-md-1">
+                        <img src="../images/useravatar.png"/>
+                    </div>
+                    <aside class="col-md-2">
+                        <strong>James Bond says:</strong>
                         <p>aaaasdfsdf asfsa  s s s </p>
                     </aside>
                 </div>
-                <div class="tweet">
-                    <aside name="left" class="tweet_left">
-                        <img src="../images/useravatar.png" height="48" width="48"/>
+                <div name="tweet" class="row">
+                    <div class="col-md-1">
+                        <img src="../images/useravatar.png"/>
+                    </div>
+                    <aside class="col-md-2">
+                        <strong>James Bond says:</strong>
+                        <p>aaaasdfsdf asfsa  s s s </p>
                     </aside>
-
-                    <aside name="right" class="tweet_right">
-                        <h5>James Bond says:</h5>
+                </div>
+                <div name="tweet" class="row">
+                    <div class="col-md-1">
+                        <img src="../images/useravatar.png"/>
+                    </div>
+                    <aside class="col-md-2">
+                        <strong>James Bond says:</strong>
                         <p>aaaasdfsdf asfsa  s s s </p>
                     </aside>
                 </div>

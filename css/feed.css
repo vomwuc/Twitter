@@ -1,49 +1,7 @@
-article{
-    margin-top: 1vw;
-    padding-left: 12vw;
+.row{
+    margin-bottom: 20px;
 }
 
-textarea{
-    display: inline-block;
-    resize: none;
-    width: 50vw;
-    height: 3vw;
-    font-size: 1vw;
-    vertical-align: middle;
-    padding-top: 1.5vw;
-    padding-left: 0.4vw;
+#publish{
+    margin: 0;
 }
-
-button{
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 1vw;
-    width: 5vw;
-}
-
-/*tweets*/
-#tweets{
-    padding-top: 1.5vw;
-}
-
-.tweet .tweet_left{
-    display: inline-block;
-}
-
-.tweet .tweet_right{
-    display: inline-block;
-    vertical-align: top;
-}
-
-.tweet .tweet_right h5{
-    font-size: 1vw;
-    margin:0;
-}
-
-.tweet .tweet_right p{
-    margin:0;
-    font-size: 1vw;
-}
-
-
-
