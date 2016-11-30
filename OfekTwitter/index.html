@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/feed.css">
+    <script src="../js/Tweeting.js"></script>
     <title>OfekTwitter</title>
 </head>
 <body>
@@ -31,13 +32,13 @@
 
         <article>
             <div name="user_input_tweet">
-                <textarea class="form-control" placeholder="tweet text..."></textarea>
+                <textarea id="publish-tweet-content" class="form-control" placeholder="tweet text..."></textarea>
                 <div class="text-right">
-                    <button id="publish" class="btn btn-primary">publish</button>
+                    <button id="publish-tweet" class="btn btn-primary">publish</button>
                 </div>
             </div>
 
-            <div id="tweets">
+            <div id="feed">
                 <div name="tweet" class="row">
                     <div class="col-md-1">
                         <img src="../images/useravatar.png"/>
