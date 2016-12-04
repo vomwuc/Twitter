@@ -28,13 +28,13 @@ function createTweetElement(userAvatarImageSrc, userName, tweetContent){
     return htmlStringToElement(tweetModule);
 }
 
-function loadTweetsToFeed(feedElement, feedTweetsJson){
+function loadTweetsToFeed(feedElement, feedTweetsJsonArray){
     var feedTweetsElements = document.createDocumentFragment();
 
-    for(tweet in feedTweetsJson){
+    for(tweet in feedTweetsJsonArray){
         feedTweetsElements.appendChild(createTweetElement("../images/useravatar.png",
-                                       feedTweetsJson[tweet].username,
-                                       feedTweetsJson[tweet].text));
+                                       feedTweetsJsonArray[tweet].username,
+                                       feedTweetsJsonArray[tweet].text));
     }
 
     feedElement.appendChild(feedTweetsElements);
@@ -44,13 +44,17 @@ function addTweetToFeed(feedJsonArray, tweetUserName, tweetContent){
     feedJsonArray.push({username:tweetUserName, text:tweetContent});
 }
 
+function encodeHTML(encodeString) {
+    return encodeString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+}
+
 window.onload = function(){
     var feedElement = document.getElementById("feed");
     var feedTweetsJson = getFeedTweetsJson();
     var publishTweetElement = document.getElementById("publish-tweet");
     var publishTweetContent = document.getElementById("publish-tweet-content");
     publishTweetElement.addEventListener("click", function(){
-        addTweetToFeed(feedTweetsJson, "Evgeny Nemzer", publishTweetContent.value);
+        addTweetToFeed(feedTweetsJson, "Evgeny Nemzer", encodeHTML(publishTweetContent.value));
         feedElement.innerHTML = "";
         loadTweetsToFeed(feedElement, feedTweetsJson);
     });
