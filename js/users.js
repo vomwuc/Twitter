@@ -26,7 +26,6 @@ function createUserElement(userAvatarImageSrc, userName, followStatus){
 }
 
 function toggleFollowStatusButton(userName, followStatus){
-
     for(user in users){
         if(users[user].username === userName){
             users[user].followStatus = !users[user].followStatus;
@@ -93,7 +92,7 @@ window.onload = function(){
     for(followButton = 0; followButton < followButtons.length; followButton++){
         var x = document.getElementById(followButtons[followButton].id);
     }
-    foloweesElement.innerHTML = "";
+    //foloweesElement.innerHTML = "";
     loadUsers(foloweesElement,getFollowees());
 
     filterTextBox.addEventListener('keyup', function(){
