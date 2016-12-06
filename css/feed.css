@@ -5,3 +5,17 @@
 #publish-tweet{
     margin: 0;
 }
+
+.test-element{
+    border:#000000 solid 1px;
+    display: block;
+    margin: 1vw;
+}
+
+.passed{
+    background-color: #5cb85c;
+}
+
+.failed{
+    background-color: #761c19;
+}

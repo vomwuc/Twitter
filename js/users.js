@@ -11,13 +11,18 @@ function htmlStringToElement(html) {
     return template.content.firstChild;
 }
 
-function createUserElement(userAvatarImageSrc, userName, followStatus){
+function createUserElement(userAvatarImageSrc, userName, followStatus, userClass){
     var userWithNoSpaces = userName.replace(/\s/gi, "");
-    var userModule = "<div name='user' id='"+ userWithNoSpaces +"' class='col-md-2'>" +
+    var followStatusButtonId = userWithNoSpaces + "Button";
+    if(userClass == ""){ //followees element
+        userWithNoSpaces += "Followees";
+        followStatusButtonId += "Followees";
+    }
+    var userModule = "<div name='user' id='"+ userWithNoSpaces +"' class='"+userClass+"'>" +
                             "<div class='thumbnail text-center'>" +
                                 "<img src=" + userAvatarImageSrc + "/>" +
                                 "<div class='caption'>" +
-                                    "<button onclick='toggleFollowStatusButton(\""+userName+"\", "+followStatus+");' name='follow-status-btn' class='btn btn-primary'>" +followStatusToString(followStatus) + "</button>" +
+                                    "<button id='"+followStatusButtonId+"' onclick='toggleFollowStatusButton(\""+userName+"\", \""+userAvatarImageSrc+"\");' name='follow-status-btn' class='btn btn-primary'>" +followStatusToString(followStatus) + "</button>" +
                                     "<p>" + userName + "</p>" +
                                 "</div>" +
                             "</div>" +
@@ -25,12 +30,26 @@ function createUserElement(userAvatarImageSrc, userName, followStatus){
     return htmlStringToElement(userModule);
 }
 
-function toggleFollowStatusButton(userName, followStatus){
+function toggleFollowStatusButton(userName, userAvatarImgSrc){
+    var userWithNoSpaces = userName.replace(/\s/gi, "");
+
     for(user in users){
         if(users[user].username === userName){
             users[user].followStatus = !users[user].followStatus;
+            document.getElementById(userWithNoSpaces + "Button").textContent = followStatusToString(users[user].followStatus);
+            if(users[user].followStatus){
+                addUserToFollowees(userName,userAvatarImgSrc,users[user].followStatus);
+            } else {
+                userWithNoSpaces += "Followees";
+                document.getElementById("followees-content").removeChild(document.getElementById(userWithNoSpaces));
+            }
         }
     }
+}
+
+function addUserToFollowees(userName, userAvatarImgSrc, followStatus){
+    var followeesUserElement = createUserElement(userAvatarImgSrc, userName, followStatus, "");
+    document.getElementById("followees-content").appendChild(followeesUserElement );
 }
 
 function getFollowStatusJsonArray(){
@@ -41,13 +60,13 @@ function followStatusToString(followStatus){
     return getFollowStatusJsonArray()[!followStatus];
 }
 
-function loadUsers(usersContentElement, usersJsonArray){
+function loadUsers(usersContentElement, usersJsonArray, userClass){
     var usersElements = document.createDocumentFragment();
 
     for(userJson in usersJsonArray){
         var userElement = createUserElement(usersJsonArray[userJson].avatarImgSrc,
                 usersJsonArray[userJson].username,
-                usersJsonArray[userJson].followStatus);
+                usersJsonArray[userJson].followStatus, userClass);
         usersElements.appendChild(userElement);
     }
 
@@ -84,7 +103,7 @@ window.onload = function(){
     var usersContentElement = document.getElementById("all-users");
     var foloweesElement = document.getElementById("followees-content");
     usersContentElement.innerHTML = "";
-    loadUsers(usersContentElement, users);
+    loadUsers(usersContentElement, users, "col-md-2");
     var filterTextBox = document.getElementById("filter-users-by-user-name");
     var filterButton = document.getElementById("filter-users-button");
     var followButtons = document.getElementsByName("follow-status-btn");
@@ -92,15 +111,15 @@ window.onload = function(){
     for(followButton = 0; followButton < followButtons.length; followButton++){
         var x = document.getElementById(followButtons[followButton].id);
     }
-    //foloweesElement.innerHTML = "";
-    loadUsers(foloweesElement,getFollowees());
+    foloweesElement.innerHTML = "";
+    loadUsers(foloweesElement,getFollowees(), "");
 
     filterTextBox.addEventListener('keyup', function(){
         usersContentElement.innerHTML = "";
-        loadUsers(usersContentElement,filterUsers(filterTextBox.value,users));
+        loadUsers(usersContentElement,filterUsers(filterTextBox.value,users),"col-md-2");
     });
     filterButton.addEventListener('click', function(){
         usersContentElement.innerHTML = "";
-        loadUsers(usersContentElement,filterUsers(filterTextBox.value,users));
+        loadUsers(usersContentElement,filterUsers(filterTextBox.value,users),"col-md-2");
     });
 };
