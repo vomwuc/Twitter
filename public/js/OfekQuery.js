@@ -2,28 +2,68 @@
  * Created by Jbt on 12/5/2016.
  */
 
+// function getElementsFromQuery(queryInStringArray){
+//     var documentElementsArray = Array.from(document.all);
+//
+//     for(queryElementNumber in queryInStringArray){
+//         documentElementsArray = documentElementsArray.filter(function (documentElement) {
+//         var hasQueryObject;
+//         var singleQueryString = queryInStringArray[queryElementNumber];
+//         switch (singleQueryString.charAt(0)){
+//             case '.':
+//                 hasQueryObject = documentElement.classList.contains(singleQueryString.substr(1));
+//                 break;
+//             case '#':
+//                 hasQueryObject = documentElement.id == singleQueryString.substr(1);
+//                 break;
+//             default:
+//
+//                 documentElementsArray.push(Array.from(documentElement.children).filter(function(child){
+//                     child.tagName == singleQueryString.toUpperCase();
+//
+//                 hasQueryObject = false;
+//                 }
+//         }
+//         return hasQueryObject;
+//     });
+//     }
+//
+//     return documentElementsArray;
+// }
+
 function getElementsFromQuery(queryInStringArray){
     var documentElementsArray = Array.from(document.all);
 
     for(queryElementNumber in queryInStringArray){
-        documentElementsArray = documentElementsArray.filter(function (documentElement) {
-        var hasQueryObject;
-        var singleQueryString = queryInStringArray[queryElementNumber];
-        switch (singleQueryString.charAt(0)){
-            case '.':
-                hasQueryObject = documentElement.classList.contains(singleQueryString.substr(1));
-                break;
-            case '#':
-                hasQueryObject = documentElement.id == singleQueryString.substr(1);
-                break;
-            default:
-                documentElementsArray.push(Array.from(documentElement.children).filter(function(child){
-                    child.tagName == singleQueryString.toUpperCase();
-                }));
-                hasQueryObject = false;
-        }
-        return hasQueryObject;
-    });
+        var resultFilteredArray = [];
+        documentElementsArray = documentElementsArray.forEach(function (documentElement) {
+            var singleQueryString = queryInStringArray[queryElementNumber];
+            switch (singleQueryString.charAt(0)){
+                case '.':
+                    if(documentElement.classList.contains(singleQueryString.substr(1))){
+                        resultFilteredArray.push(documentElement);
+                    }
+                    break;
+                case '#':
+                    if(documentElement.id == singleQueryString.substr(1)){
+                        resultFilteredArray.push(documentElement);
+                    }
+                    break;
+                default:
+                    if(queryElementNumber > 0){
+                        Array.from(documentElement.getElementsByTagName("*")).forEach(function(filteredElement){
+                            if(filteredElement.tagName == singleQueryString.toUpperCase()){
+                                resultFilteredArray.push(filteredElement);
+                            }
+                        });
+                    } else {
+                        if(documentElement.tagName == singleQueryString.toUpperCase()){
+                            resultFilteredArray.push(documentElement);
+                        }
+                    }
+            }
+        });
+        documentElementsArray = resultFilteredArray;
     }
 
     return documentElementsArray;
