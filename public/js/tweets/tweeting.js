@@ -26,22 +26,8 @@ function createTweetElement(userAvatarImageSrc, userName, tweetContent){
     return htmlStringToElement(tweetModule);
 }
 
-function getUsers() {
-
-}
-
 function getUserName(userId) {
-    return axios.get('http://10.103.50.193:8080/users/' + userId);
-}
-
-function getTweetsFromServer(feedElement){
-    axios.get('http://10.103.50.193:8080/tweets')
-        .then(function (response) {
-            loadTweetsToFeed(feedElement, response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    return axios.get('http://localhost:8081/users/' + userId);
 }
 
 function loadTweetsToFeed(feedElement, feedTweetsJsonArray){
@@ -62,8 +48,24 @@ function loadTweetsToFeed(feedElement, feedTweetsJsonArray){
     );
 }
 
-function addTweetToFeed(feedJsonArray, tweetUserName, tweetContent){
-    feedJsonArray.push({username:tweetUserName, text:tweetContent});
+function uploadTweetToFeed(feedElement, userName, tweetContent){
+        feedElement.appendChild(createTweetElement("../../images/useravatar.png",
+            userName,
+            tweetContent));
+}
+
+function getTweetsFromServer(feedElement){
+    axios.get('http://localhost:8081/tweets')
+        .then(function (response) {
+            loadTweetsToFeed(feedElement, response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function addTweetToFeedServer(tweetUserId, tweetContent){
+    axios.post('http://localhost:8081/users/ToggleUserFollowees',{text:tweetContent,user:tweetUserId});
 }
 
 function encodeHTML(encodeString) {
@@ -132,18 +134,23 @@ function tweetApplyToServer(){
 //     assert(true, "simple unsuccessful test 3");
 // });
 
+function getActiveUser(){
+    return axios.get('/activeUser');
+}
 
 window.onload = function(){
     var feedElement = document.getElementById("feed");
     var publishTweetElement = document.getElementById("publish-tweet");
     var publishTweetContent = document.getElementById("publish-tweet-content");
-    publishTweetElement.addEventListener("click", function(){
-        addTweetToFeed(feedTweetsJsonArray, "Evgeny Nemzer", encodeHTML(publishTweetContent.value));
-        feedElement.innerHTML = "";
-        loadTweetsToFeed(feedElement, feedTweetsJsonArray);
-        publishTweetContent.value = "";
-    });
+
     getTweetsFromServer(feedElement);
+    getActiveUser().then(function(activeUserData){
+        publishTweetElement.addEventListener("click", function(){
+            addTweetToFeedServer(activeUserData.data.username, encodeHTML(publishTweetContent.value));
+            uploadTweetToFeed(feedElement,activeUserData.data.username, encodeHTML(publishTweetContent.value));
+            publishTweetContent.value = "";
+        });
+    });
     // test_group('Test feed inputs',function(){assert(testXss(),"xss test");
     //     assert(tweetApplyToServer(),"Servers updated");
     // });

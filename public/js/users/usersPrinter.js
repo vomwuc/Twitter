@@ -16,18 +16,13 @@ function followStatusToString(followStatus){
     return getFollowStatusJsonArray()[!followStatus];
 }
 
-function createUserElement(userAvatarImageSrc, userName, followStatus, userClass){
-    var userWithNoSpaces = userName.replace(/\s/gi, "");
-    var followStatusButtonId = userWithNoSpaces + "Button";
-    if(userClass == ""){ //followees element
-        userWithNoSpaces += "Followees";
-        followStatusButtonId += "Followees";
-    }
-    var userModule = "<div name='user' id='"+ userWithNoSpaces +"' class='"+userClass+"'>" +
+function createUserElement(userAvatarImageSrc, userId, userName, followStatus, userClass){
+
+    var userModule = "<div name='user' class='"+userClass+"'>" +
         "<div class='thumbnail text-center'>" +
         "<img src=" + userAvatarImageSrc + "/>" +
         "<div class='caption'>" +
-        "<button id='"+followStatusButtonId+"' onclick='toggleFollowStatusButton(\""+userName+"\", \""+userAvatarImageSrc+"\");' name='follow-status-btn' class='btn btn-primary'>" +followStatusToString(followStatus) + "</button>" +
+        "<button class='btn btn-primary' name='follow-status-btn' onclick='toggleFollowStatusButton(\""+userId+"\", \""+userAvatarImageSrc+"\");'>" +followStatusToString(followStatus) + "</button>" +
         "<p>" + userName + "</p>" +
         "</div>" +
         "</div>" +
@@ -35,7 +30,7 @@ function createUserElement(userAvatarImageSrc, userName, followStatus, userClass
     return htmlStringToElement(userModule);
 }
 
-function isFollowedUser(activeUser, checkUser){
+function isFollowedByUser(activeUser, checkUser){
     var userFolloweesIds = activeUser.following;
     var followeesUserWithCheckUserId = userFolloweesIds.filter(function (followedUserId) {
         return followedUserId == checkUser._id;
@@ -44,14 +39,15 @@ function isFollowedUser(activeUser, checkUser){
     return followeesUserWithCheckUserId.length > 0;
 }
 
-function loadUsersByClass(usersContentElement, usersJsonArray, activateUser, userClass){
+function loadUsersByClass(usersContentElement, usersJsonArray, activeUser, userClass){
     var usersElements = document.createDocumentFragment();
 
     for(userJson in usersJsonArray){
-        if(usersJsonArray[userJson]._id != activateUser._id){
+        if(usersJsonArray[userJson]._id != activeUser._id){
             var userElement = createUserElement("../../images/useravatar.png",
+                usersJsonArray[userJson]._id,
                 usersJsonArray[userJson].username,
-                isFollowedUser(activateUser,usersJsonArray[userJson]), userClass);
+                isFollowedByUser(activeUser,usersJsonArray[userJson]), userClass);
             usersElements.appendChild(userElement);
         }
     }
@@ -59,19 +55,27 @@ function loadUsersByClass(usersContentElement, usersJsonArray, activateUser, use
     usersContentElement.appendChild(usersElements);
 }
 
-function loadUsers(usersContentElement, usersJsonArray, activateUser, userClass){
-    loadUsersByClass(usersContentElement, usersJsonArray, activateUser, userClass);
+function loadUsers(usersContentElement, usersJsonArray, activeUser, userClass){
+    loadUsersByClass(usersContentElement, usersJsonArray, activeUser, userClass);
 }
 
 function getFollowees(users, followeesIds){
     return users.filter(function(user){return followeesIds.includes(user._id)});
 }
 
-function loadFollowees(usersContentElement, usersJsonArray, activateUser, userClass){
-    loadUsersByClass(usersContentElement, getFollowees(usersJsonArray, activateUser.following), activateUser, userClass);
+function loadUserToFollowees(usersContentElement,activeUser, user, userClass){
+    var userElement = createUserElement("../../images/useravatar.png",
+        user._id,
+        user.username,
+        isFollowedByUser(activeUser,user), userClass);
+    usersContentElement.appendChild(userElement);
 }
 
-function loadUsersContent(usersContentElement, foloweesElement, users){
-    loadUsers(usersContentElement, users,users[0],"col-md-2");
-    loadFollowees(foloweesElement, users,users[0], "");
+function loadFollowees(usersContentElement, usersJsonArray, activeUser, userClass){
+    loadUsersByClass(usersContentElement, getFollowees(usersJsonArray, activeUser.following), activeUser, userClass);
+}
+
+function loadUsersContent(usersContentElement, foloweesElement, activeUser, users){
+    loadUsers(usersContentElement, users,activeUser,"col-md-2");
+    loadFollowees(foloweesElement, users,activeUser, "");
 }
